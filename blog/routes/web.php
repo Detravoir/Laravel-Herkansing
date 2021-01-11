@@ -28,3 +28,5 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'
 
 Route::get('/category', [App\Http\Controllers\CategoryController::class, 'category'])->name('category');
 
+Route::post('/addSong', [App\Http\Controllers\PostController::class, 'addSong'])->name('addSong');
+
