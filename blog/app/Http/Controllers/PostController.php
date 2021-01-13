@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function post(){
+
         return view('posts.post');
     }
 

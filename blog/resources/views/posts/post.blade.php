@@ -65,6 +65,11 @@
                                 <label for="url" class="col-md-4 col-form-label text-md-right">Song url</label>
 
                                 <div class="col-md-6">
+                                    Voer hier de youtube link in.<br/>
+                                    Voer hier alleen het deel van de link in <br/>
+                                    NA watch?v= en voor de & <br/>
+                                    <b>Voorbeeld:</b><br/>
+                                    https://www.youtube.com/watch?v=<u><b>8GW6sLrK40k</b></u>&ab_channel=ElectronicGems
                                     <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" required>
 
                                     @error('url')
