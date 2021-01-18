@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +15,6 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
 
                     <div class="col-md-8">
                         @if(count($posts) > 0)
@@ -28,12 +28,16 @@
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                                 </iframe>
                                 <h5>Posted by {{$post->user_name}}</h5>
+                                @if($user->permission == '1')
+                                <a href="{{url("/delete/{$post->id}")}}">Delete</a>
+                                @endif
                                 <br/>
                                 <br/>
                             @endforeach
                         @else
 
                         @endif
+
                     </div>
                 </div>
             </div>

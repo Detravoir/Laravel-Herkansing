@@ -33,4 +33,11 @@ class PostController extends Controller
 
         return redirect('post')->with('response', 'Song Added Succesfully');
     }
+
+    public function deletePost($post_id){
+        Post::where('id', $post_id)
+            ->delete();
+
+        return redirect('/home')->with('response', 'Post Deleted Successfully');
+    }
 }

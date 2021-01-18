@@ -30,3 +30,5 @@ Route::get('/category', [App\Http\Controllers\CategoryController::class, 'catego
 
 Route::post('/addSong', [App\Http\Controllers\PostController::class, 'addSong'])->name('addSong');
 
+Route::get('/delete/{id}', [App\Http\Controllers\PostController::class, 'deletePost'])->name('deletePost');
+
