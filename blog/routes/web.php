@@ -37,3 +37,5 @@ Route::post('/addSong', [App\Http\Controllers\PostController::class, 'addSong'])
 Route::get('/delete/{id}', [App\Http\Controllers\PostController::class, 'deletePost'])->name('deletePost');
 
 Route::post('/search',  [App\Http\Controllers\PostController::class, 'search'])->name('search');
+
+Route::post('/filter',  [App\Http\Controllers\PostController::class, 'filter'])->name('filter');

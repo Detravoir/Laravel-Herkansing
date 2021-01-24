@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav mr-auto">
-                        <li><a class="nav-item navbar-text" href="{{ url('/home') }}">Home</a></li>
+                        <li><a class="nav-item navbar-text" style="margin-right: 15px;" href="{{ url('/home') }}">Home</a></li>
                         <li>  </li>
                         <li><a class="nav-item navbar-text" href="{{ url('/post') }}">Add Song</a></li>
                     </ul>

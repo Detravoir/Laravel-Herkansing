@@ -53,9 +53,17 @@ class PostController extends Controller
     }
 
     public function search(Request $request){
+        $user = auth()->user();
         $keyword = $request->input('search');
         $posts = Post::where('song_title', 'LIKE', '%'.$keyword. '%')->get();
-        return view('posts.searchposts', ['posts' => $posts]);
+        return view('posts.searchposts', ['posts' => $posts, 'user' => $user]);
 
+    }
+
+    public function filter(Request $request){
+        $user = auth()->user();
+        $keyword = $request->input('filter');
+        $posts = Post::where('category', 'LIKE', '%'.$keyword. '%')->get();
+        return view('posts.filtererdposts', ['posts' => $posts, 'user' => $user]);
     }
 }

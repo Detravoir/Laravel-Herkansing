@@ -28,7 +28,14 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         $user = auth()->user();
-        return view('home',['posts' => $posts, 'user' => $user]);
+        $array = array();
+        foreach($posts as $post) {
+            if(!in_array($post->category, $array)){
+                array_push($array, $post->category);
+           }
+        }
+
+        return view('home',['posts' => $posts, 'user' => $user, 'array' => $array]);
     }
 
 }
