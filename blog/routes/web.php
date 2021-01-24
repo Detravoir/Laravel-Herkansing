@@ -26,12 +26,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::get('/post', [App\Http\Controllers\PostController::class, 'post'])->name('post');
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
 
-Route::get('/category', [App\Http\Controllers\CategoryController::class, 'category'])->name('category');
+Route::get('/update/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('update');
 
 Route::post('/addSong', [App\Http\Controllers\PostController::class, 'addSong'])->name('addSong');
 

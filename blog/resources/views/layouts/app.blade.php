@@ -34,6 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav mr-auto">
                         <li><a class="nav-item navbar-text" href="{{ url('/home') }}">Home</a></li>
+                        <li>  </li>
                         <li><a class="nav-item navbar-text" href="{{ url('/post') }}">Add Song</a></li>
                     </ul>
 
@@ -60,8 +61,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('/profile') }}">profile</a>
-                                <a class="dropdown-item" href="{{ url('/category') }}">Category</a>
+                                    @if($user->permission == '1')
+                                        <a class="dropdown-item" href="{{ url('/admin') }}">admin page</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -9,7 +9,7 @@
                 {{Session::get('alert')}}
             @endif
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Songs') }}</div>
                 <div class="col-lg-8">
 
                     <form method="POST" action='{{url("/search")}}'>
@@ -18,7 +18,7 @@
                             <input type="text" name="search" class="form-control" placeholder="Search for ...">
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-default">
-                                        Go!
+                                        Search
                                     </button>
                                 </span>
                         </div>
@@ -28,26 +28,27 @@
                     <div class="col-md-8">
                         @if(count($posts) > 0)
                             @foreach($posts->all() as $post)
+                                <div
+                                @if($post->visable == '0')
+                                    hidden
+                                    @endif
+                                >
+                                    <h4>{{$post->song_artist . " - " . $post->song_title}}</h4>
 
-                                <h4>{{$post->song_artist . " - " . $post->song_title}}</h4>
-
-                                <iframe width="560" height="315"
-                                        src="https://www.youtube.com/embed/{{$post->song_url}}"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                                </iframe>
-                                <h5>Posted by {{$post->user_name}}</h5>
-                                @if($user->permission == '1')
-                                <a href="{{url("/delete/{$post->id}")}}">Delete</a>
-                                @endif
-                                <br/>
-                                <br/>
+                                    <iframe width="560" height="315"
+                                            src="https://www.youtube.com/embed/{{$post->song_url}}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                    </iframe>
+                                    <h5>genre: {{$post->category}}</h5>
+                                    <h5>Posted by {{$post->user_name}}</h5>
+                                    <br/>
+                                    <br/>
+                                </div>
                             @endforeach
                         @else
 
                         @endif
-
-                        {{print $user->created_at}}
                     </div>
                 </div>
             </div>
