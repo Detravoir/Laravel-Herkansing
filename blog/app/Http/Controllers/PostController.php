@@ -10,8 +10,14 @@ class PostController extends Controller
 {
     public function post(){
 
+        $user = auth()->user();
         if(Auth::check()) {
-            return view('posts.post');
+            if(strtotime($user->created_at) < strtotime('-3 days')) {
+                return view('posts.post');
+            }
+            else{
+                return redirect('home')->with('alert', 'You have to be registerd for 3 days to be able to post songs.');
+            }
         }
         else{
             return redirect('login');

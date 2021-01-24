@@ -5,9 +5,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(Session::has('alert'))
+                {{Session::get('alert')}}
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="col-lg-8">
+
                     <form method="POST" action='{{url("/search")}}'>
                         {{csrf_field()}}
                         <div class="input-group">
@@ -43,6 +47,7 @@
 
                         @endif
 
+                        {{print $user->created_at}}
                     </div>
                 </div>
             </div>
