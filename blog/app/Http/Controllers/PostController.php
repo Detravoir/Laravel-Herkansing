@@ -10,7 +10,12 @@ class PostController extends Controller
 {
     public function post(){
 
-        return view('posts.post');
+        if(Auth::check()) {
+            return view('posts.post');
+        }
+        else{
+            return redirect('login');
+        }
     }
 
     public function addSong(Request $request){
@@ -39,5 +44,12 @@ class PostController extends Controller
             ->delete();
 
         return redirect('/home')->with('response', 'Post Deleted Successfully');
+    }
+
+    public function search(Request $request){
+        $keyword = $request->input('search');
+        $posts = Post::where('song_title', 'LIKE', '%'.$keyword. '%')->get();
+        return view('posts.searchposts', ['posts' => $posts]);
+
     }
 }

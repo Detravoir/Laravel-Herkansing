@@ -2,24 +2,24 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <div class="col-lg-8">
-                    <form method="POST" action='{{url("/search")}}'>
-                        {{csrf_field()}}
-                        <div class="input-group">
-                            <input type="text" name="search" class="form-control" placeholder="Search for ...">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="col-lg-8">
+                        <form method="POST" action='{{url("/search")}}'>
+                            {{csrf_field()}}
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search for ...">
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-default">
                                         Go!
                                     </button>
                                 </span>
-                        </div>
-                    </form>
-                </div>
+                            </div>
+                        </form>
+                    </div>
 
                     <div class="col-md-8">
                         @if(count($posts) > 0)
@@ -33,9 +33,7 @@
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                                 </iframe>
                                 <h5>Posted by {{$post->user_name}}</h5>
-                                @if($user->permission == '1')
-                                <a href="{{url("/delete/{$post->id}")}}">Delete</a>
-                                @endif
+                            
                                 <br/>
                                 <br/>
                             @endforeach
@@ -48,5 +46,5 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection

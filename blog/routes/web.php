@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('auth.login');
+});
+
+Route::get('/logout', function () {
     return view('auth.login');
 });
 
@@ -32,3 +37,4 @@ Route::post('/addSong', [App\Http\Controllers\PostController::class, 'addSong'])
 
 Route::get('/delete/{id}', [App\Http\Controllers\PostController::class, 'deletePost'])->name('deletePost');
 
+Route::post('/search',  [App\Http\Controllers\PostController::class, 'search'])->name('search');
