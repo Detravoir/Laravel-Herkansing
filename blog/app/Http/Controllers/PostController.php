@@ -53,17 +53,31 @@ class PostController extends Controller
     }
 
     public function search(Request $request){
+        $get = Post::all();
+        $array = array();
+        foreach($get as $post) {
+            if(!in_array($post->category, $array)){
+                array_push($array, $post->category);
+            }
+        }
         $user = auth()->user();
         $keyword = $request->input('search');
         $posts = Post::where('song_title', 'LIKE', '%'.$keyword. '%')->get();
-        return view('posts.searchposts', ['posts' => $posts, 'user' => $user]);
+        return view('posts.searchposts', ['posts' => $posts, 'user' => $user, 'array' => $array]);
 
     }
 
     public function filter(Request $request){
+        $get = Post::all();
+        $array = array();
+        foreach($get as $post) {
+            if(!in_array($post->category, $array)){
+                array_push($array, $post->category);
+            }
+        }
         $user = auth()->user();
         $keyword = $request->input('filter');
         $posts = Post::where('category', 'LIKE', '%'.$keyword. '%')->get();
-        return view('posts.filtererdposts', ['posts' => $posts, 'user' => $user]);
+        return view('posts.filtererdposts', ['posts' => $posts, 'user' => $user, 'array' => $array]);
     }
 }
